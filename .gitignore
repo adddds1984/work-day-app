@@ -1,0 +1,56 @@
+﻿# Dart
+*.dart_tool
+*.dart_test.data.coverage
+*.packages
+*.metadata
+*.seed
+.parties/
+.dart_tool/
+.build/
+.build.d/
+.packages
+/pubspec.lock
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.dart_tool/
+# iOS
+*.pbxproj
+*.pbxproj.backup
+*.xcworkspace/
+!xcshareddata/
+!xcshareddata/xcschemes/
+.xcworkspace/
+!xcshareddata/
+!xcshareddata/xcschemes/
+/ios/Pods/
+/ios/.symlinks/
+*.xcarchive
+*.ipa
+*.dSYM.zip
+*.dSYM
+# Android
+/build/
+*.apk
+*.aab
+*.ap_
+*.dex
+.local.properties
+/gradle/wrapper/gradle-wrapper.jar
+*/src/*/java/**/generated/
+# Windows
+/build/
+# macOS
+.DS_Store
+# Flutter web
+/web/assets/
+# Logs
+*.log
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+# Hive
+*.hive
