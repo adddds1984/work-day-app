@@ -48,9 +48,9 @@ class WorkDayRecord extends HiveObject {
       createdAt = createdAt ?? DateTime.now(),
       updatedAt = updatedAt ?? DateTime.now();
 
-  String get dateKey => '--';
-  String get displayDate => '年月日';
-  String get shortDisplay => '月日';
+  String get dateKey => '${date.year}-${date.month.toString().padLeft(2,'0')}-${date.day.toString().padLeft(2,'0')}';
+  String get displayDate => '${date.year}年${date.month}月${date.day}日';
+  String get shortDisplay => '${date.month}月${date.day}日';
 
   WorkDayRecord copyWith({WorkDayType? type, double? price, String? note, DateTime? date}) {
     return WorkDayRecord(id: id, date: date ?? this.date, type: type ?? this.type, price: price ?? this.price, note: note ?? this.note, createdAt: createdAt, updatedAt: DateTime.now());
