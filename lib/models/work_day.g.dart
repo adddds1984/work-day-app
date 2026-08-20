@@ -1,5 +1,5 @@
-﻿// GENERATED CODE - DO NOT MODIFY BY HAND
-part of '\''work_day.dart'\'';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+part of 'work_day.dart';
 
 class WorkDayRecordAdapter extends TypeAdapter<WorkDayRecord> {
   @override
