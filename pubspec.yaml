@@ -1,11 +1,11 @@
-﻿name: work_day_app
+name: work_day_app
 description: 离线记工日APP - 简洁高效的工地工日记录工具
-publish_to: '\''none'\''
+publish_to: 'none'
 version: 2.0.0+1
 
 environment:
-  sdk: '\'>=3.0.0 <4.0.0'\''
-  flutter: '\'>=3.16.0'\''
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.16.0'
 
 dependencies:
   flutter:
