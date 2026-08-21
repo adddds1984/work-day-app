@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import '../models/work_day.dart';
 
@@ -6,7 +6,7 @@ class WorkDayProvider extends ChangeNotifier {
   static const String _workDayBoxName = 'work_days';
   static const String _priceConfigKey = 'price_config';
 
-  late Box<WorkDayRecord> _box;
+  late Box _box;
   PriceConfig? _priceConfig;
   List<WorkDayRecord> _records = [];
   DateTime _selectedYearMonth = DateTime.now();
@@ -21,7 +21,7 @@ class WorkDayProvider extends ChangeNotifier {
 
   Future<void> init() async {
     try {
-      _box = await Hive.openBox<WorkDayRecord>(_workDayBoxName);
+      _box = await Hive.openBox(_workDayBoxName);
       _loadPriceConfig();
       _loadRecords();
     } catch (e) {
