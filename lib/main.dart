@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:work_day_app/providers/work_day_provider.dart';
 import 'package:work_day_app/screens/home_screen.dart';
@@ -26,7 +26,7 @@ class WorkDayApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => WorkDayProvider()..init(),
-      child: const MaterialApp(
+      child: MaterialApp(
         title: '记工日',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
