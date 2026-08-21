@@ -29,8 +29,10 @@ jobs:
         run: flutter pub get
         timeout-minutes: 10
 
+      - name: Delete old Android project
+        run: rm -rf android
       - name: Create Flutter Android project
-        run: flutter create . --platforms=android --org=com.example --project-name=work_day_app
+        run: flutter create . --org=com.example --project-name=work_day_app
         timeout-minutes: 5
 
       - name: Build APK
