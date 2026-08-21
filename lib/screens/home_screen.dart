@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../models/work_day.dart';
@@ -84,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
         if (record != null) ...[
           _buildInfoRow('工日类型', record.type.label, record.type.color),
           const SizedBox(height: 8),
-          _buildInfoRow('当日单价', '${record.price.toStringAsFixed(0)}'),
+          _buildInfoRow('当日单价', '\'),
           if (record.note.isNotEmpty) ...[const SizedBox(height: 8), _buildInfoRow('备注', record.note)],
         ],
         const SizedBox(height: 12),
@@ -100,24 +102,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildInfoRow(String label, String value, [Color? color]) {
     return Row(children: [
-      Text('\label：', style: const TextStyle(color: Colors.grey)),
-      Expanded(child: Text(value, style: TextStyle(color: color ?? Colors.black, fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis)),
+      Text(label, style: const TextStyle(color: Colors.grey, fontSize: 14)),
+      const SizedBox(width: 8),
+      Text(value, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: color ?? Colors.black87)),
     ]);
   }
 
   void _showEditDialog(BuildContext context, DateTime date) {
     final provider = widget.provider;
     final existing = provider.getRecord(date);
-    final config = provider.priceConfig;
     WorkDayType selectedType = existing?.type ?? WorkDayType.whiteShift;
-    double selectedPrice = existing?.price ?? config.getPrice(selectedType);
+    double selectedPrice = existing?.price ?? provider.priceConfig.getPrice(selectedType);
     String noteText = existing?.note ?? '';
+    final config = provider.priceConfig;
     final priceController = TextEditingController(text: selectedPrice.toStringAsFixed(0));
 
     showDialog(context: context, builder: (dialogContext) {
       return StatefulBuilder(builder: (context, setDialogState) {
         return AlertDialog(
-          title: Text('编辑工日 - ', style: const TextStyle(fontSize: 18)),
+          title: Text('编辑工日 - ' + DateFormat('MM月dd日').format(date), style: const TextStyle(fontSize: 18)),
           content: SingleChildScrollView(child: Column(mainAxisSize: MainAxisSize.min, children: [
             const Text('工日类型', style: TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
@@ -140,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
             TextField(
               controller: priceController,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
-              inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d*(\.\d*)?\$'))],
+              inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\\d*(\\.\\d*)?\$'))],
               decoration: const InputDecoration(prefixText: '¥ ', border: OutlineInputBorder(), hintText: '请输入金额'),
               onChanged: (v) { final p = double.tryParse(v); if (p != null) setDialogState(() => selectedPrice = p); },
             ),
@@ -203,8 +206,3 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 }
-
-
-
-
-
