@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
         if (record != null) ...[
           _buildInfoRow('工日类型', record.type.label, record.type.color),
           const SizedBox(height: 8),
-          _buildInfoRow('当日单价', '\'),
+          _buildInfoRow('当日单价', '$record.price.toStringAsFixed(0)'),
           if (record.note.isNotEmpty) ...[const SizedBox(height: 8), _buildInfoRow('备注', record.note)],
         ],
         const SizedBox(height: 12),
