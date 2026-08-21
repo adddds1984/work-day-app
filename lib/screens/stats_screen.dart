@@ -1,9 +1,9 @@
-import packagefluttermaterialdart;
-import packageproviderproviderdart;
-import ../models/work_day.dart;
-import ../providers/work_day_provider.dart;
-import ../utils/app_colors.dart;
-import ../widgets/work_day_tile.dart;
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/work_day.dart';
+import '../providers/work_day_provider.dart';
+import '../utils/app_colors.dart';
+import '../widgets/work_day_tile.dart';
 
 class StatsScreen extends StatefulWidget {
   final WorkDayProvider provider;
@@ -17,7 +17,7 @@ class _StatsScreenState extends State<StatsScreen> {
   Widget build(BuildContext context) {
     final provider = widget.provider;
     return Scaffold(
-      appBar: AppBar(title: const Text(stat)),
+      appBar: AppBar(title: const Text('统计')),
       body: Column(children: [
         _buildYearPicker(provider),
         if (!provider.isYearMode) _buildMonthPicker(provider),

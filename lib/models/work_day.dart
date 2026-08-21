@@ -14,8 +14,8 @@ extension WorkDayTypeExtension on WorkDayType {
       case WorkDayType.rest: return '休息';
     }
   }
-  Color get color => _colors[this]!;
-  IconData get icon => _icons[this]!;
+  Color get color => _Colors.colors[this]!;
+  IconData get icon => _Colors.icons[this]!;
 }
 
 class _Colors {
